@@ -1,14 +1,16 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*\\.html)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
-      ]
+      "src": "/(.*\\.html)",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate"
+      },
+      "continue": true
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  ]
 }
