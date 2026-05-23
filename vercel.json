@@ -1,12 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/GStock/:path*",
-      "destination": "https://hrg7408-001-site1.jtempurl.com/api/GStock/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
