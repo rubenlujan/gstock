@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config/apiConfig';
+import { API_BASE_URL_GENERAL } from '../config/apiConfig';
 
 // Suponiendo que tienes una función para obtener el CompanyId
 const getCompanyId = () => {
@@ -47,6 +48,33 @@ export const post = async (endpoint, body = {}) => {
   );
 
   const res = await fetch(`${API_BASE_URL}/${endpoint}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(fullBody),
+  });
+
+  if (!res.ok) throw new Error(`Error en POST a ${endpoint}`);
+
+  /*const json = await res.json();
+  console.log('Response:', json);*/
+
+  return res.json();
+};
+
+export const postGeneral = async (endpoint, body = {}) => {
+  const fullBody = {
+    ...body,
+  };
+  console.log(
+    'POST a:',
+    `${API_BASE_URL_GENERAL}/${endpoint}`,
+    'con body:',
+    JSON.stringify(fullBody)
+  );
+
+  const res = await fetch(`${API_BASE_URL_GENERAL}/${endpoint}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

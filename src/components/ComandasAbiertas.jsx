@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { post } from '../services/api';
+import { postGeneral } from '../services/api';
 
 function ComandasAbiertas() {
   const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ function ComandasAbiertas() {
     setLoading(true);
     setError('');
     try {
-      const result = await post('POS/GetOpenComandasSummary');
+      const result = await postGeneral('POS/GetOpenComandasSummary');
       if (Array.isArray(result)) {
         setData(result);
       } else {
